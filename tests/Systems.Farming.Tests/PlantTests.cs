@@ -79,5 +79,20 @@ namespace Systems.Farming.Tests
 
             Assert.Equal(typeof(Vegetable), product.GetType());
         }
+
+        [Fact]
+        public void PlantDies()
+        {
+            ISoil soil = new Soil();
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
+            plant.Plant(soil);
+            plant = plant.Grow(); // Seedling
+            plant = plant.Grow(); // Vegetative
+            plant = plant.Grow(); // Flowering
+            plant = plant.Grow(); // Harvestable
+            plant = plant.Grow(); // Dead
+
+            Assert.Equal(typeof(DeadPlant), plant.GetType());
+        }
     }
 }

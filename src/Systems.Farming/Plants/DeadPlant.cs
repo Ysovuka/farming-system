@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public class HarvestablePlant : IPlant
+    public class DeadPlant : IPlant
     {
         private ISoil _soil = null;
 
-        public HarvestablePlant(string name, PlantType type)
+        public DeadPlant(string name, PlantType type)
         {
             Name = name;
             Type = type;
@@ -17,7 +17,7 @@ namespace Systems.Farming
         public string Name { get; private set; }
         public PlantType Type { get; private set; }
         public bool IsGrowing { get; private set; }
-        public bool IsHarvestable { get; private set; } = true;
+        public bool IsHarvestable { get { return true; } }
 
         public void Plant(ISoil soil)
         {
@@ -29,16 +29,11 @@ namespace Systems.Farming
 
         public IPlant Grow()
         {
-            if (IsHarvestable)
-                return new DeadPlant(Name, Type);
-
-            return new VegativePlant(Name, Type);
+            throw new NotImplementedException();
         }
 
         public IHarvestable Harvest()
         {
-            IsHarvestable = false;
-
             switch (Type)
             {
                 case PlantType.Unidentified:
