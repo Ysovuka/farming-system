@@ -6,8 +6,10 @@ namespace Systems.Farming
 {
     public interface ISoil
     {
-        bool IsOccupied { get; }
+        void IncreaseAcidity(float acidicLevel);
 
+        bool IsOccupied { get; }
+        float PH { get; }
         void Plant(IPlant seed);
     }
 }

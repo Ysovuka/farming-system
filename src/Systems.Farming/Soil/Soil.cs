@@ -13,7 +13,14 @@ namespace Systems.Farming
 
         }
 
+        public void IncreaseAcidity(float acidicLevel)
+        {
+            PH += acidicLevel;
+        }
+
         public bool IsOccupied { get { return _plant != null; } }
+
+        public float PH { get; private set; } = 7.0f;
 
         public void Plant(IPlant plant)
         {
