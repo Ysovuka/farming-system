@@ -24,5 +24,24 @@ namespace Systems.Farming.Tests
 
             Assert.Equal(7.5f, soil.PH);
         }
+
+        [Fact]
+        public void HydrateSoil()
+        {
+            ISoil soil = new Soil();
+            soil.Hydrate(1.0f);
+
+            Assert.Equal(1.0f, soil.SaturationPoint);
+        }
+
+        [Fact]
+        public void DehydrateSoil()
+        {
+            ISoil soil = new Soil();
+            soil.Hydrate(10.0f);
+            soil.Dehydrate(1.0f);
+
+            Assert.Equal(9.0f, soil.SaturationPoint);
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace Systems.Farming
 
         }
 
+        public float PH { get; private set; } = 7.0f;
+
         public void IncreaseAcidity(float acidicLevel)
         {
             PH -= acidicLevel;
@@ -23,9 +25,19 @@ namespace Systems.Farming
             PH += alkalineLevel;
         }
 
-        public bool IsOccupied { get { return _plant != null; } }
+        public float SaturationPoint { get; private set; } = 0.0f;
 
-        public float PH { get; private set; } = 7.0f;
+        public void Hydrate(float waterLevel)
+        {
+            SaturationPoint += waterLevel;
+        }
+
+        public void Dehydrate(float waterLevel)
+        {
+            SaturationPoint -= waterLevel;
+        }
+
+        public bool IsOccupied { get { return _plant != null; } }
 
         public void Plant(IPlant plant)
         {
