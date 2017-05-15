@@ -4,21 +4,19 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public class UnidentifiedSeed : ISeed
+    public class FloweringPlant : IPlant
     {
         private ISoil _soil = null;
-
-        public UnidentifiedSeed()
+        public FloweringPlant(string plantType)
         {
-            SeedType = "Unidentified Seed";
+            PlantType = plantType;
         }
 
-        public string PlantType { get { return SeedType; } }
-        public string SeedType { get; private set; }
+        public string PlantType { get; private set; }
 
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return false; } }
-        
+
         public void Plant(ISoil soil)
         {
             soil.Plant(this);
@@ -29,7 +27,10 @@ namespace Systems.Farming
 
         public IPlant Grow()
         {
-            throw new NotImplementedException();
+            IPlant plant = new HarvestablePlant(PlantType);
+            plant.Plant(_soil);
+
+            return plant;
         }
     }
 }

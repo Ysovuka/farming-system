@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public interface ISeed
+    public interface ISeed : IPlant
     {
         string SeedType { get; }
     }

@@ -11,8 +11,8 @@ namespace Systems.Farming.Tests
         public void PlantSeedInSoil()
         {
             ISoil soil = new Soil();
-            ISeed seed = new IdentifiedSeed("Carrot");
-            soil.Plant(seed);
+            IPlant plant = new IdentifiedSeed("Carrot");
+            plant.Plant(soil);
 
             Assert.True(soil.IsOccupied);
         }
@@ -21,11 +21,25 @@ namespace Systems.Farming.Tests
         public void GrowPlantInSoil()
         {
             ISoil soil = new Soil();
-            ISeed seed = new IdentifiedSeed("Carrot");
-            soil.Plant(seed);
-            soil.Grow();
+            IPlant plant = new IdentifiedSeed("Carrot");
+            plant.Plant(soil);
+            plant = plant.Grow();
 
-            Assert.True(soil.IsGrowing);
+            Assert.True(plant.IsGrowing);
+        }
+
+        [Fact]
+        public void GrowPlantStages()
+        {
+            ISoil soil = new Soil();
+            IPlant plant = new IdentifiedSeed("carrot");
+            plant.Plant(soil);
+            plant = plant.Grow(); // Seedling
+            plant = plant.Grow(); // Vegetative
+            plant = plant.Grow(); // Flowering
+            plant = plant.Grow(); // Harvestable
+
+            Assert.True(plant.IsHarvestable);
         }
     }
 }

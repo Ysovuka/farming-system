@@ -6,24 +6,18 @@ namespace Systems.Farming
 {
     public class Soil : ISoil
     {
-        private ISeed _plant = null;
+        private IPlant _plant = null;
 
         public Soil()
         {
 
         }
-        
-        public bool IsGrowing { get; private set; }
+
         public bool IsOccupied { get { return _plant != null; } }
 
-        public void Plant(ISeed seed)
+        public void Plant(IPlant plant)
         {
-            _plant = seed;
-        }
-
-        public void Grow()
-        {
-            IsGrowing = true;
+            _plant = plant;
         }
     }
 }

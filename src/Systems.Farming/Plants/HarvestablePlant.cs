@@ -4,27 +4,26 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public class UnidentifiedSeed : ISeed
+    public class HarvestablePlant : IPlant
     {
         private ISoil _soil = null;
 
-        public UnidentifiedSeed()
+        public HarvestablePlant(string plantType)
         {
-            SeedType = "Unidentified Seed";
+            PlantType = plantType;
         }
 
-        public string PlantType { get { return SeedType; } }
-        public string SeedType { get; private set; }
+        public string PlantType { get; private set; }
 
         public bool IsGrowing { get; private set; }
-        public bool IsHarvestable { get { return false; } }
-        
+        public bool IsHarvestable { get { return true; } }
+
         public void Plant(ISoil soil)
         {
             soil.Plant(this);
 
             _soil = soil;
-            IsGrowing = true;
+            IsGrowing = false;
         }
 
         public IPlant Grow()
