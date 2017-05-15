@@ -15,7 +15,12 @@ namespace Systems.Farming
 
         public void IncreaseAcidity(float acidicLevel)
         {
-            PH += acidicLevel;
+            PH -= acidicLevel;
+        }
+
+        public void IncreaseAlkalinity(float alkalineLevel)
+        {
+            PH += alkalineLevel;
         }
 
         public bool IsOccupied { get { return _plant != null; } }

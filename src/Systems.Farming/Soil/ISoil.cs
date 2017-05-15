@@ -7,6 +7,7 @@ namespace Systems.Farming
     public interface ISoil
     {
         void IncreaseAcidity(float acidicLevel);
+        void IncreaseAlkalinity(float alkalineLevel);
 
         bool IsOccupied { get; }
         float PH { get; }
