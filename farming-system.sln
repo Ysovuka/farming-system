@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systems.Farming", "src\Systems.Farming\Systems.Farming.csproj", "{C0D3AC42-CDB2-406D-B103-4D135C85683E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Systems.Farming.Tests", "tests\Systems.Farming.Tests\Systems.Farming.Tests.csproj", "{BB20701E-5FC9-4FF5-BCDB-FD61C0F3CE01}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0D3AC42-CDB2-406D-B103-4D135C85683E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D3AC42-CDB2-406D-B103-4D135C85683E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D3AC42-CDB2-406D-B103-4D135C85683E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D3AC42-CDB2-406D-B103-4D135C85683E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB20701E-5FC9-4FF5-BCDB-FD61C0F3CE01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB20701E-5FC9-4FF5-BCDB-FD61C0F3CE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB20701E-5FC9-4FF5-BCDB-FD61C0F3CE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB20701E-5FC9-4FF5-BCDB-FD61C0F3CE01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
