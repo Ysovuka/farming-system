@@ -77,7 +77,7 @@ namespace Systems.Farming.Tests
 
             IHarvestable product = plant.Harvest();
 
-            Assert.Equal("Carrot", product.Name);
+            Assert.Equal(typeof(Vegetable), product.GetType());
         }
     }
 }
