@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Systems.Farming
 {
@@ -21,8 +20,9 @@ namespace Systems.Farming
         public ISeed Identify(ISeed seed)
         {
             if (seed is IdentifiedSeed) return seed;
+            
 
-            Random random = new Random();            
+            Random random = new Random((int)DateTime.UtcNow.Ticks);            
             return _seeds[random.Next(_seeds.Count - 1)];
         }
     }

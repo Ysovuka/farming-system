@@ -7,10 +7,12 @@ namespace Systems.Farming
     public class UnidentifiedSeed : ISeed
     {
         private ISoil _soil = null;
+        private SeedBank _seedBank = null;
 
-        public UnidentifiedSeed()
+        public UnidentifiedSeed(SeedBank seedBank)
         {
             SeedType = "Unidentified Seed";
+            _seedBank = seedBank;
         }
 
         public string PlantType { get { return SeedType; } }
@@ -29,7 +31,10 @@ namespace Systems.Farming
 
         public IPlant Grow()
         {
-            throw new NotImplementedException();
+            IPlant plant = _seedBank.Identify(this);
+            plant.Plant(_soil);
+            
+            return plant.Grow();
         }
     }
 }

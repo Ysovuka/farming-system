@@ -16,11 +16,11 @@ namespace Systems.Farming.Tests
             seedBank.Add("Dragonfruit");
             seedBank.Add("Squash");
 
-            ISeed seed = new UnidentifiedSeed();
+            ISeed seed = new UnidentifiedSeed(seedBank);
             ISeed idenitifiedSeed = seedBank.Identify(seed);
 
             Assert.NotEqual(idenitifiedSeed?.GetType(), typeof(UnidentifiedSeed));
-            Debug.WriteLine($"Identified Seed Type: {idenitifiedSeed.SeedType}");
+            Debug.WriteLine($"IdentifySeed: Identified Seed Type: {idenitifiedSeed.SeedType}");
         }
     }
 }
