@@ -27,6 +27,14 @@ namespace Systems.Farming
             IsGrowing = false;
         }
 
+        public void Uproot()
+        {
+            _soil.Uproot();
+            _soil = null;
+
+            IsGrowing = false;
+        }
+
         public IPlant Grow()
         {
             throw new NotImplementedException();

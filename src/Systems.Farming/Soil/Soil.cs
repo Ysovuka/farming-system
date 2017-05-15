@@ -31,5 +31,10 @@ namespace Systems.Farming
         {
             _plant = plant;
         }
+
+        public void Uproot()
+        {
+            _plant = null;
+        }
     }
 }

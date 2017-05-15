@@ -26,6 +26,14 @@ namespace Systems.Farming
             IsGrowing = true;
         }
 
+        public void Uproot()
+        {
+            _soil.Uproot();
+            _soil = null;
+
+            IsGrowing = false;
+        }
+
         public IPlant Grow()
         {
             IPlant plant = new Seedling(Name, Type);

@@ -11,6 +11,7 @@ namespace Systems.Farming
 
         bool IsOccupied { get; }
         float PH { get; }
-        void Plant(IPlant seed);
+        void Plant(IPlant plant);
+        void Uproot();
     }
 }

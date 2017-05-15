@@ -94,5 +94,16 @@ namespace Systems.Farming.Tests
 
             Assert.Equal(typeof(DeadPlant), plant.GetType());
         }
+
+        [Fact]
+        public void UprootPlant()
+        {
+            ISoil soil = new Soil();
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
+            plant.Plant(soil);
+            plant.Uproot();
+
+            Assert.False(soil.IsOccupied);
+        }
     }
 }

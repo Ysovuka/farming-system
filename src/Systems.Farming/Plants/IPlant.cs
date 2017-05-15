@@ -12,6 +12,7 @@ namespace Systems.Farming
         PlantType Type { get; }
 
         void Plant(ISoil soil);
+        void Uproot();
         IPlant Grow();
         IHarvestable Harvest();
     }
