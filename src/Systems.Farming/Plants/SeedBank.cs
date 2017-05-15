@@ -23,7 +23,7 @@ namespace Systems.Farming
             if (seed is IdentifiedSeed) return seed;
 
             Random random = new Random();            
-            return _seeds[random.Next(_seeds.Count) - 1];
+            return _seeds[random.Next(_seeds.Count - 1)];
         }
     }
 }
