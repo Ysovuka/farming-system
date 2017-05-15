@@ -16,5 +16,16 @@ namespace Systems.Farming.Tests
 
             Assert.True(soil.IsOccupied);
         }
+
+        [Fact]
+        public void GrowPlantInSoil()
+        {
+            ISoil soil = new Soil();
+            ISeed seed = new IdentifiedSeed("Carrot");
+            soil.Plant(seed);
+            soil.Grow();
+
+            Assert.True(soil.IsGrowing);
+        }
     }
 }

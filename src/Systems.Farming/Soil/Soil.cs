@@ -13,6 +13,7 @@ namespace Systems.Farming
 
         }
         
+        public bool IsGrowing { get; private set; }
         public bool IsOccupied { get { return _plant != null; } }
 
         public void Plant(ISeed seed)
@@ -20,5 +21,9 @@ namespace Systems.Farming
             _plant = seed;
         }
 
+        public void Grow()
+        {
+            IsGrowing = true;
+        }
     }
 }
