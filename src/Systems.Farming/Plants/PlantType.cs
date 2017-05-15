@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public interface ISeed : IPlant
+    public enum PlantType
     {
-
+        Unidentified = -1,
+        Fruit = 0,
+        Vegetable = 1,
     }
 }

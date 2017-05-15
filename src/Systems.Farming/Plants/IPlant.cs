@@ -8,9 +8,11 @@ namespace Systems.Farming
     {
         bool IsGrowing { get; }
         bool IsHarvestable { get; }
-        string PlantType { get; }
+        string Name { get; }
+        PlantType Type { get; }
 
         void Plant(ISoil soil);
         IPlant Grow();
+        IHarvestable Harvest();
     }
 }

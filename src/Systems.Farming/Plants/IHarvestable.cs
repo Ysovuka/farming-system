@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public interface ISeed : IPlant
+    public interface IHarvestable
     {
-
+        string Name { get; }
     }
 }

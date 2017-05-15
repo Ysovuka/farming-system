@@ -11,12 +11,12 @@ namespace Systems.Farming
 
         public UnidentifiedSeed(SeedBank seedBank)
         {
-            SeedType = "Unidentified Seed";
+            Name = "Unidentified Seed";
             _seedBank = seedBank;
         }
 
-        public string PlantType { get { return SeedType; } }
-        public string SeedType { get; private set; }
+        public string Name { get; private set; }
+        public PlantType Type { get { return PlantType.Unidentified; } }
 
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return false; } }
@@ -35,6 +35,11 @@ namespace Systems.Farming
             plant.Plant(_soil);
             
             return plant.Grow();
+        }
+
+        public IHarvestable Harvest()
+        {
+            throw new NotImplementedException();
         }
     }
 }

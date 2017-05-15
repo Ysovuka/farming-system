@@ -12,9 +12,9 @@ namespace Systems.Farming
 
         }
 
-        public void Add(string seedType)
+        public void Add(string name, PlantType type)
         {
-            _seeds.Add(new IdentifiedSeed(seedType));
+            _seeds.Add(new IdentifiedSeed(name, type));
         }
 
         public ISeed Identify(ISeed seed)

@@ -8,13 +8,14 @@ namespace Systems.Farming
     {
         private ISoil _soil = null;
 
-        public VegativePlant(string plantType)
+        public VegativePlant(string name, PlantType type)
         {
-            PlantType = plantType;
+            Name = name;
+            Type = type;
         }
 
-        public string PlantType { get; private set; }
-
+        public string Name { get; private set; }
+        public PlantType Type { get; private set; }
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return false; } }
 
@@ -28,10 +29,15 @@ namespace Systems.Farming
 
         public IPlant Grow()
         {
-            IPlant plant = new FloweringPlant(PlantType);
+            IPlant plant = new FloweringPlant(Name, Type);
             plant.Plant(_soil);
 
             return plant;
+        }
+
+        public IHarvestable Harvest()
+        {
+            throw new NotImplementedException();
         }
 
     }

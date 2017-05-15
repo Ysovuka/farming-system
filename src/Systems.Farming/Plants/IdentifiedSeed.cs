@@ -7,14 +7,14 @@ namespace Systems.Farming
     public class IdentifiedSeed : ISeed
     {
         private ISoil _soil = null;
-        public IdentifiedSeed(string seedType)
+        public IdentifiedSeed(string name, PlantType type)
         {
-            SeedType = seedType;
+            Name = name;
+            Type = type;
         }
 
-        public string PlantType { get { return $"{SeedType} Seed"; } }
-        public string SeedType { get; private set; }
-
+        public string Name { get; private set; }
+        public PlantType Type { get; private set; }
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return false; } }
 
@@ -28,10 +28,15 @@ namespace Systems.Farming
 
         public IPlant Grow()
         {
-            IPlant plant = new Seedling(SeedType);
+            IPlant plant = new Seedling(Name, Type);
             plant.Plant(_soil);
 
             return plant;
+        }
+
+        public IHarvestable Harvest()
+        {
+            throw new NotImplementedException();
         }
     }
 }

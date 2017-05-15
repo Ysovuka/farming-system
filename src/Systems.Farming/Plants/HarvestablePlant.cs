@@ -8,13 +8,14 @@ namespace Systems.Farming
     {
         private ISoil _soil = null;
 
-        public HarvestablePlant(string plantType)
+        public HarvestablePlant(string name, PlantType type)
         {
-            PlantType = plantType;
+            Name = name;
+            Type = type;
         }
 
-        public string PlantType { get; private set; }
-
+        public string Name { get; private set; }
+        public PlantType Type { get; private set; }
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return true; } }
 
@@ -29,6 +30,22 @@ namespace Systems.Farming
         public IPlant Grow()
         {
             throw new NotImplementedException();
+        }
+
+        public IHarvestable Harvest()
+        {
+            switch (Type)
+            {
+                case PlantType.Unidentified:
+                    return null;
+
+                case PlantType.Fruit:
+                    return new Fruit(Name);
+
+                case PlantType.Vegetable:
+                default:
+                    return new Vegetable(Name);
+            }
         }
     }
 }

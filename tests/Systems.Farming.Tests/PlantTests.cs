@@ -6,13 +6,13 @@ using Xunit;
 
 namespace Systems.Farming.Tests
 {
-    public class SoilTests
+    public class PlantTests
     {
         [Fact]
         public void PlantSeedInSoil()
         {
             ISoil soil = new Soil();
-            IPlant plant = new IdentifiedSeed("Carrot");
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
             plant.Plant(soil);
 
             Assert.True(soil.IsOccupied);
@@ -22,7 +22,7 @@ namespace Systems.Farming.Tests
         public void GrowIdentifiedSeed()
         {
             ISoil soil = new Soil();
-            IPlant plant = new IdentifiedSeed("Carrot");
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
             plant.Plant(soil);
             plant = plant.Grow();
 
@@ -32,20 +32,15 @@ namespace Systems.Farming.Tests
         [Fact]
         public void GrowPlantStages()
         {
-            SeedBank seedBank = new SeedBank();
-            seedBank.Add("Carrot");
-            seedBank.Add("Dragonfruit");
-            seedBank.Add("Squash");
-
             ISoil soil = new Soil();
-            IPlant plant = seedBank.Identify(new IdentifiedSeed("Carrot"));
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
             plant.Plant(soil);
             plant = plant.Grow(); // Seedling
             plant = plant.Grow(); // Vegetative
             plant = plant.Grow(); // Flowering
             plant = plant.Grow(); // Harvestable
 
-            Debug.WriteLine($"GrowPlantStages: Plant Type: {plant.PlantType}");
+            Debug.WriteLine($"GrowPlantStages: Plant Type: {plant.Name}");
             Assert.True(plant.IsHarvestable);
         }
 
@@ -53,9 +48,9 @@ namespace Systems.Farming.Tests
         public void GrowUnidentifiedSeed()
         {
             SeedBank seedBank = new SeedBank();
-            seedBank.Add("Carrot");
-            seedBank.Add("Dragonfruit");
-            seedBank.Add("Squash");
+            seedBank.Add("Carrot", PlantType.Vegetable);
+            seedBank.Add("Dragonfruit", PlantType.Fruit);
+            seedBank.Add("Squash", PlantType.Vegetable);
 
             ISoil soil = new Soil();
             IPlant plant = new UnidentifiedSeed(seedBank);
@@ -65,8 +60,24 @@ namespace Systems.Farming.Tests
             plant = plant.Grow(); // Flowering
             plant = plant.Grow(); // Harvestable
 
-            Debug.WriteLine($"GrowUnidentifiedSeed: Plant Type: {plant.PlantType}");
+            Debug.WriteLine($"GrowUnidentifiedSeed: Plant Type: {plant.Name}");
             Assert.True(plant.IsHarvestable);
+        }
+
+        [Fact]
+        public void HarvestPlant()
+        {
+            ISoil soil = new Soil();
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
+            plant.Plant(soil);
+            plant = plant.Grow(); // Seedling
+            plant = plant.Grow(); // Vegetative
+            plant = plant.Grow(); // Flowering
+            plant = plant.Grow(); // Harvestable
+
+            IHarvestable product = plant.Harvest();
+
+            Assert.Equal("Carrot", product.Name);
         }
     }
 }
