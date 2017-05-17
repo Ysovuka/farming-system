@@ -6,7 +6,9 @@ namespace Systems.Farming
 {
     public interface ISoil
     {
-        ICollection<INutrient> Nutrients { get; }
+        IList<INutrient> Nutrients { get; }
+        void Absorb(INutrient nutrient);
+        float Nourishment(INutrient nutrient);
         void Sterilize();
 
         float PH { get; }

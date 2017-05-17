@@ -52,5 +52,15 @@ namespace Systems.Farming.Tests
 
             Assert.Equal(0, soil.Nutrients.Count);
         }
+
+        [Fact]
+        public void ImproveNitrogenInSoil()
+        {
+            ISoil soil = new Soil();
+            Nitrogen nitrogen = new Nitrogen();
+            soil.Absorb(nitrogen);
+
+            Assert.True(soil.Nourishment(nitrogen) > 0);
+        }
     }
 }

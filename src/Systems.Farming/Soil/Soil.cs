@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Systems.Farming
@@ -13,7 +14,30 @@ namespace Systems.Farming
 
         }
 
-        public ICollection<INutrient> Nutrients { get; } = new List<INutrient>();
+        public IList<INutrient> Nutrients { get; } = new List<INutrient>();
+        
+        public void Absorb(INutrient nutrient)
+        {
+            INutrient nourishment = Nutrients.FirstOrDefault(n => n.GetType() == nutrient.GetType());
+
+            if (nourishment != null)
+            {
+                Nutrients.Remove(nourishment);
+                nourishment.Absorb(nutrient.Level);
+
+                Nutrients.Add(nourishment);
+            }
+            else
+            {
+                Nutrients.Add(nutrient);
+            }            
+        }
+
+        public float Nourishment(INutrient nutrient)
+        {
+            return Nutrients.FirstOrDefault(n => n.GetType() == nutrient.GetType())?.Level
+                ?? 0;
+        }
 
         public void Sterilize()
         {
