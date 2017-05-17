@@ -4,13 +4,17 @@ using System.Text;
 
 namespace Systems.Farming
 {
-    public class Nitrogen : INutrient
+    public sealed class Nutrient : INutrient
     {
-        public Nitrogen()
+        public Nutrient(string nutrientName)
         {
             Random random = new Random();
             Level = (float)random.NextDouble();
+
+            Name = nutrientName;
         }
+
+        public string Name { get; private set; }
 
         public float Level { get; private set; }
 

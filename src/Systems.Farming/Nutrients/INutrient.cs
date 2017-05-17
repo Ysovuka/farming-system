@@ -6,6 +6,7 @@ namespace Systems.Farming
 {
     public interface INutrient
     {
+        string Name { get; }
         float Level { get; }
 
         void Absorb(float nutrientLevel);

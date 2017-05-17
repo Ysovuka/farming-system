@@ -54,13 +54,19 @@ namespace Systems.Farming.Tests
         }
 
         [Fact]
-        public void ImproveNitrogenInSoil()
+        public void ImproveNutrientInSoil()
         {
             ISoil soil = new Soil();
-            Nitrogen nitrogen = new Nitrogen();
+            INutrient nitrogen = new Nutrient("Nitrogen");
             soil.Absorb(nitrogen);
 
             Assert.True(soil.Nourishment(nitrogen) > 0);
+
+            soil.Sterilize();
+            INutrient phosphorus = new Nutrient("Phosphorus");
+            soil.Absorb(phosphorus);
+
+            Assert.True(soil.Nourishment(nitrogen) == 0);
         }
     }
 }

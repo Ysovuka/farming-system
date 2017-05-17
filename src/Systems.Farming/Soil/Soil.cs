@@ -18,7 +18,7 @@ namespace Systems.Farming
         
         public void Absorb(INutrient nutrient)
         {
-            INutrient nourishment = Nutrients.FirstOrDefault(n => n.GetType() == nutrient.GetType());
+            INutrient nourishment = Nutrients.FirstOrDefault(n => n.Name.Equals(nutrient.Name));
 
             if (nourishment != null)
             {
@@ -35,7 +35,7 @@ namespace Systems.Farming
 
         public float Nourishment(INutrient nutrient)
         {
-            return Nutrients.FirstOrDefault(n => n.GetType() == nutrient.GetType())?.Level
+            return Nutrients.FirstOrDefault(n => n.Name.Equals(nutrient.Name))?.Level
                 ?? 0;
         }
 
