@@ -43,5 +43,14 @@ namespace Systems.Farming.Tests
 
             Assert.Equal(9.0f, soil.SaturationPoint);
         }
+
+        [Fact]
+        public void SterlizeSoil()
+        {
+            ISoil soil = new Soil();
+            soil.Sterilize();
+
+            Assert.Equal(0, soil.Nutrients.Count);
+        }
     }
 }
