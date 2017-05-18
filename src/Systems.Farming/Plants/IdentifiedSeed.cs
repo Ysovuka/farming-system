@@ -11,12 +11,27 @@ namespace Systems.Farming
         {
             Name = name;
             Type = type;
+
+            Thirst = 0.0f;
         }
 
         public string Name { get; private set; }
         public PlantType Type { get; private set; }
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return false; } }
+
+        public float Hydration { get; private set; }
+        public float Thirst { get; private set; }
+        public bool IsThirsty { get; private set; }
+        public void Drink()
+        {
+            if (Thirst >= 1)
+            {
+                _soil.Dehydrate(0.1f);
+                Thirst -= 0.1f;
+            }
+        }
+
 
         public void Plant(ISoil soil)
         {
@@ -46,5 +61,6 @@ namespace Systems.Farming
         {
             throw new NotImplementedException();
         }
+        
     }
 }

@@ -19,6 +19,14 @@ namespace Systems.Farming
         public bool IsGrowing { get; private set; }
         public bool IsHarvestable { get { return true; } }
 
+        public float Hydration { get { return 0; } }
+        public float Thirst { get { return 0; } }
+        public bool IsThirsty { get { return Thirst >= 1; } }
+        public void Drink()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Plant(ISoil soil)
         {
             soil.Plant(this);

@@ -15,5 +15,10 @@ namespace Systems.Farming
         void Uproot();
         IPlant Grow();
         IHarvestable Harvest();
+
+        float Hydration { get; }
+        float Thirst { get; }
+        bool IsThirsty { get; }
+        void Drink();
     }
 }

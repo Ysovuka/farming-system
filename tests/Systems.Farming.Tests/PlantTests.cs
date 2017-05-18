@@ -105,5 +105,18 @@ namespace Systems.Farming.Tests
 
             Assert.False(soil.IsOccupied);
         }
+
+        [Fact]
+        public void AbsorbWater()
+        {
+            ISoil soil = new Soil();
+            IPlant plant = new IdentifiedSeed("Carrot", PlantType.Vegetable);
+            plant.Plant(soil);
+
+            plant.Drink();
+
+
+
+        }
     }
 }
